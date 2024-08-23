@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <!--[if lt IE 9]> 
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <![endif]-->	
+        <meta name="description" content="">
+        <meta name="author" content="webthemez"> 
+    
+    <title>Ambulance Assistant</title>
+        <!--This is a link to the Leaflet stylesheet-->
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css"/>
+        <!--This is a link to the Leaflet-routing-machine stylesheet-->
+        <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
+        <!--This is a link to the Leaflet JavaScript library-->
+        <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+        <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol/dist/L.Control.Locate.min.css" />
+        <script src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol/dist/L.Control.Locate.min.js" charset="utf-8"></script>
+        
+        <!-- link to the JQuery library-->
+        <script language="javascript" type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+        <script src="js/plothospitals.js"></script>
+    
+        <meta property="og:image" content="Path to my teaser.png"/> <!-- Facebook automatically scrapes this. Go to https://developers.facebook.com/tools/debug/ if you update and want to force Facebook to rescrape. -->
+        <meta property="og:title" content="Creative and Descriptive Paper Title." />
+        <meta property="og:description" content="Paper description." />
+    
+        <!-- Get from Google Analytics -->
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src=""></script> 
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+    
+            gtag('config', 'UA-75863369-6');
+        </script>	
+        <!--[if lt IE 9]>
+            <script src="https://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->    
+        <!--[if lte IE 8]>
+            <script type="text/javascript" src="https://explorercanvas.googlecode.com/svn/trunk/excanvas.js"></script>
+        <![endif]-->    
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />   
+    </head>
+ 
+<body onload='showmap()'>
+    <form id="coordinate">
+        <div class="form-group">
+            <label for="latitude" class="sr-only">Latitude:</label>
+            <input type="number" class="form-control"  id="latitude" placeholder="Enter latitude">
+        </div>
+        <div class="form-group">
+            <label for="longitude" class="sr-only">Longitude:</label>
+            <input type="number" class="form-control"  id="longitude" placeholder="Enter longitude">
+        </div>
+        
+        <button type="button" class="btn btn-primary"  onclick='route()'>Find Nearest Hospital</button>
+    </form>
+    <h3><i class="fa fa-cloud color"></i> &nbsp;Search a hospital by name</h3>
+                        <!-- add form to recieve the value typed by users-->
+					<form id="searchForm" class="form-inline justify-content-center mt-4">
+						<div class="form-group mb-2">
+							<input type="text" class="form-control" id="hospitalName"  placeholder="Enter hospital name" aria-label="Hospital Name">
+						</div>
+						<button type="button" class="btn btn-primary mb-2" onclick='search()'>Search</button>
+					</form>
+    
+    <div id="mapcontainer" style="width: 100%; height: 700px;"></div>
+
+    <div >
+        <button onclick='fetchData()' class="btn btn-primary mr-2">Show All Hospitals in England</button>
+        <button onclick='clearData()' class="btn btn-secondary mr-2">Clear</button>
+    </div>
+
+    <div id="results" class="mt-3 p-3 border rounded"></div>
+
+</body>
+</html>
